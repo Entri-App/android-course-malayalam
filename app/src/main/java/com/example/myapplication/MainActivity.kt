@@ -15,8 +15,5 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        binding.button.setOnClickListener {
-            Toast.makeText(this@MainActivity,"This is a Toast!",Toast.LENGTH_LONG).show()
-        }
     }
 }
