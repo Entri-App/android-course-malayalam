@@ -19,38 +19,29 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupUI() {
 
-        /*binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
-            when(checkedId) {
-                R.id.radioFemale -> Toast.makeText(this, "Female Button is Checked", Toast.LENGTH_SHORT).show()
-                R.id.radioMale -> Toast.makeText(this, "Male Button is Checked", Toast.LENGTH_SHORT).show()
-                R.id.radioOthers -> Toast.makeText(this, "Others Button is Checked", Toast.LENGTH_SHORT).show()
-            }
-        }*/
-
-        binding.radioFemale.setOnCheckedChangeListener { buttonView, isChecked ->
+        binding.checkBoxMalayalam.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
-                Toast.makeText(this, "Female Button is Checked", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Malayalam is checked", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Female Button is Unchecked", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Malayalam is unchecked", Toast.LENGTH_SHORT).show()
             }
         }
 
         binding.button.setOnClickListener {
-
-          /*  if (binding.radioFemale.isChecked) {
-                Toast.makeText(this, "Female Button is Checked", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            if (binding.checkBoxMalayalam.isChecked) {
+                Toast.makeText(this, "Malayalam is known", Toast.LENGTH_SHORT).show()
+            }
+            if (binding.checkBoxEnglish.isChecked) {
+                Toast.makeText(this, "English is known", Toast.LENGTH_SHORT).show()
+            }
+            if (binding.checkBoxHindi.isChecked) {
+                Toast.makeText(this, "Hindi is known", Toast.LENGTH_SHORT).show()
+            }
+            if (binding.checkBoxOthers.isChecked) {
+                Toast.makeText(this, "Knows other languages", Toast.LENGTH_SHORT).show()
             }
 
-            if (binding.radioMale.isChecked) {
-                Toast.makeText(this, "Male Button is Checked", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
 
-            if (binding.radioOthers.isChecked) {
-                Toast.makeText(this, "Others Button is Checked", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }*/
         }
     }
 }
