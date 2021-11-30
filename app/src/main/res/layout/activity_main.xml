@@ -9,44 +9,45 @@
     android:gravity="center"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.textfield.TextInputLayout
-        app:startIconDrawable="@drawable/ic_star"
-        android:id="@+id/textField"
+
+    <TextView
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username">
+        android:text="Select a gender" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        app:endIconMode="password_toggle"
-        android:layout_marginTop="20dp"
-        app:startIconDrawable="@drawable/ic_lock"
-        android:id="@+id/textFieldPassword"
+    <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <RadioButton
+            android:id="@+id/radioFemale"
             android:layout_width="match_parent"
-            android:inputType="textPassword"
-            android:id="@+id/edtPassword"
             android:layout_height="wrap_content"
-            />
+            android:text="Female" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <RadioButton
+            android:id="@+id/radioMale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/radioOthers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Others" />
+
+    </RadioGroup>
 
     <Button
-        android:layout_marginTop="20dp"
-        android:id="@+id/btnLogin"
+        android:layout_marginTop="15dp"
+        android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login" />
+        android:text="CONTINUE" />
 
 </LinearLayout>
