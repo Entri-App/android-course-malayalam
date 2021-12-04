@@ -19,29 +19,5 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupUI() {
 
-        binding.checkBoxMalayalam.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                Toast.makeText(this, "Malayalam is checked", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Malayalam is unchecked", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        binding.button.setOnClickListener {
-            if (binding.checkBoxMalayalam.isChecked) {
-                Toast.makeText(this, "Malayalam is known", Toast.LENGTH_SHORT).show()
-            }
-            if (binding.checkBoxEnglish.isChecked) {
-                Toast.makeText(this, "English is known", Toast.LENGTH_SHORT).show()
-            }
-            if (binding.checkBoxHindi.isChecked) {
-                Toast.makeText(this, "Hindi is known", Toast.LENGTH_SHORT).show()
-            }
-            if (binding.checkBoxOthers.isChecked) {
-                Toast.makeText(this, "Knows other languages", Toast.LENGTH_SHORT).show()
-            }
-
-
-        }
     }
 }

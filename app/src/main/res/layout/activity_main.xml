@@ -9,42 +9,9 @@
     android:gravity="center"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:text="Select known languages" />
-
-    <CheckBox
-        android:id="@+id/checkBoxMalayalam"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Malayalam" />
-
-    <CheckBox
-        android:id="@+id/checkBoxEnglish"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="English" />
-
-    <CheckBox
-        android:id="@+id/checkBoxHindi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hindi" />
-
-    <CheckBox
-        android:id="@+id/checkBoxOthers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Others" />
-
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Continue" />
+        android:text="Click Me" />
 </LinearLayout>
