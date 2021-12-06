@@ -8,17 +8,28 @@
     tools:context=".MainActivity"
     android:gravity="center"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<!--
-    <Button
-        android:onClick="onButtonPressed"
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Click Me" />
-        -->
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Click Me" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RadioButton
+            style="@style/MyCustomRadioButton"
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Radio Button 1" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Radio Button 1" />
+
+    </RadioGroup>
 </LinearLayout>
