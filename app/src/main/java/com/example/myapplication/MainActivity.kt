@@ -1,9 +1,8 @@
 package com.example.myapplication
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +18,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
+        binding.button.setOnClickListener {
+                                                // true
+            binding.progressBar4.isVisible = !(binding.progressBar4.isVisible)
+            binding.progressBar5.isVisible = !(binding.progressBar5.isVisible)
+
+            val progress = binding.progressBar6.progress
+            val maxProgress = binding.progressBar6.max
+            if (progress < maxProgress) {
+                binding.progressBar6.progress = progress + 10
+            } else {
+                binding.progressBar6.progress = 0
+            }
+            binding.textView.text = "${binding.progressBar6.progress}/$maxProgress"
+        }
 
     }
 
