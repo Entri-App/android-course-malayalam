@@ -1,8 +1,8 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -18,19 +18,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        binding.button.setOnClickListener {
-                                                // true
-            binding.progressBar4.isVisible = !(binding.progressBar4.isVisible)
-            binding.progressBar5.isVisible = !(binding.progressBar5.isVisible)
 
-            val progress = binding.progressBar6.progress
-            val maxProgress = binding.progressBar6.max
-            if (progress < maxProgress) {
-                binding.progressBar6.progress = progress + 10
+        binding.button.setOnClickListener {
+            val isSwitchOn = binding.switch1.isChecked
+            if (isSwitchOn) {
+                Toast.makeText(this, "Switch is On", Toast.LENGTH_SHORT).show()
             } else {
-                binding.progressBar6.progress = 0
+                Toast.makeText(this, "Switch is Off", Toast.LENGTH_SHORT).show()
             }
-            binding.textView.text = "${binding.progressBar6.progress}/$maxProgress"
+        }
+
+        binding.switch1.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                binding.textView.text = "Switch is On"
+            } else {
+                binding.textView.text = "Switch is Off"
+            }
         }
 
     }
