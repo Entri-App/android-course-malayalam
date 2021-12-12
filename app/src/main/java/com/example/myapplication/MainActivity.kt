@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_INDEFINITE
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,24 +20,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-
         binding.button.setOnClickListener {
-            val isSwitchOn = binding.switch1.isChecked
-            if (isSwitchOn) {
-                Toast.makeText(this, "Switch is On", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Switch is Off", Toast.LENGTH_SHORT).show()
-            }
+            //TODO : Show SnackBar
+            Snackbar.make(binding.layout, "This is a snackbar", Snackbar.LENGTH_LONG).show()
         }
 
-        binding.switch1.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                binding.textView.text = "Switch is On"
-            } else {
-                binding.textView.text = "Switch is Off"
-            }
+        binding.button2.setOnClickListener {
+            Snackbar.make(binding.layout, "This is a snackbar with action", LENGTH_INDEFINITE)
+                .setAction("DISMISS") {
+                    Toast.makeText(this, "Snackbar dismissed!!", Toast.LENGTH_SHORT).show()
+                }
+                .show()
         }
-
     }
 
 }
