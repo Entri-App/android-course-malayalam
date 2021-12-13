@@ -20,18 +20,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        binding.button.setOnClickListener {
-            //TODO : Show SnackBar
-            Snackbar.make(binding.layout, "This is a snackbar", Snackbar.LENGTH_LONG).show()
-        }
 
-        binding.button2.setOnClickListener {
-            Snackbar.make(binding.layout, "This is a snackbar with action", LENGTH_INDEFINITE)
-                .setAction("DISMISS") {
-                    Toast.makeText(this, "Snackbar dismissed!!", Toast.LENGTH_SHORT).show()
-                }
-                .show()
-        }
     }
 
 }
