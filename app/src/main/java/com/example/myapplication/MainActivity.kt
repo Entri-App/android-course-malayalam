@@ -1,6 +1,8 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.widget.SeekBar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
 
@@ -17,12 +19,34 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupUI() {
-        binding.calendarView.maxDate = 1641018600000L
-        binding.calendarView.minDate = 1609482600000L
-        binding.calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            val date = "$year/${month + 1}/$dayOfMonth"
-            binding.textView.text = date
-        }
+        binding.seekBar2.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                Toast.makeText(this@MainActivity, "Progress : $progress", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+        })
+        binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                Toast.makeText(this@MainActivity, "Progress : $progress", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+        })
     }
 
 
