@@ -1,8 +1,6 @@
 package com.example.myapplication
 
 import android.os.Bundle
-import android.widget.SeekBar
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
 
@@ -19,31 +17,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupUI() {
-        binding.seekBar2.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                Toast.makeText(this@MainActivity, "Progress : $progress", Toast.LENGTH_SHORT).show()
+        binding.searchView.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                binding.textView.text = "Text Submitted : $query"
+                return true
             }
 
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-
-            }
-
-        })
-        binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                Toast.makeText(this@MainActivity, "Progress : $progress", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-
+            override fun onQueryTextChange(newText: String?): Boolean {
+                binding.textView.text = "Text changed to : $newText"
+                return true
             }
 
         })
