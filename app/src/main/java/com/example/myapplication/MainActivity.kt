@@ -21,19 +21,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupUI() {
-        binding.searchView.setOnQueryTextListener(object :
-            androidx.appcompat.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                binding.textView.text = "Text Submitted : $query"
-                return true
-            }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                binding.textView.text = "Text changed to : $newText"
-                return true
-            }
-
-        })
     }
 
 
