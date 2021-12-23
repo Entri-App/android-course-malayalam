@@ -1,12 +1,15 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import com.example.myapplication.databinding.ActivityMainBinding
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +24,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupUI() {
-
+        binding.topAppBar.setOnClickListener {
+            binding.drawerLayout.openDrawer(GravityCompat.START)
+        }
+        binding.navView.setNavigationItemSelectedListener { item ->
+            Toast.makeText(this@MainActivity, item.title, Toast.LENGTH_SHORT).show()
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+            false
+        }
     }
 
 
