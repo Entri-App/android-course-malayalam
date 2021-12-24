@@ -24,14 +24,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupUI() {
-        binding.topAppBar.setOnClickListener {
-            binding.drawerLayout.openDrawer(GravityCompat.START)
-        }
-        binding.navView.setNavigationItemSelectedListener { item ->
-            Toast.makeText(this@MainActivity, item.title, Toast.LENGTH_SHORT).show()
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-            false
-        }
+
     }
 
 
