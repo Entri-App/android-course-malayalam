@@ -25,19 +25,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupUI() {
-        //TODO : Create an adapter for viewpager
-        val adapter = MyAdapter(this)
-        //TODO :attach adapter to viewpager
-        binding.viewpager.adapter = adapter
 
-        //TODO : Connect viewpager with tab layout
-        TabLayoutMediator(binding.tabLayout, binding.viewpager) { tab, position ->
-            tab.text = when (position) {
-                0 -> "Chats"
-                1 -> "Status"
-                else -> "Calls"
-            }
-        }.attach()
     }
 
 
