@@ -27,14 +27,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupUI() {
-        //get fragmentContainerView
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-        val navController = navHostFragment.navController
-        //find navigation controller
-        NavigationUI.setupWithNavController(binding.bottomNav,navController)
 
-        //connect nav graph with bottom nav viee
     }
 
 
