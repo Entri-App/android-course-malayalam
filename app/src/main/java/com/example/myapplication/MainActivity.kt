@@ -21,59 +21,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupUI() {
-        val array = getData()
-        //TODO : Create adapter
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, array)
-        //TODO : Assign adapter to listview
-        binding.listView.adapter = adapter
-        //TODO : Implement onClickListner
-        binding.listView.onItemClickListener =
-            AdapterView.OnItemClickListener { p0, p1, p2, p3 ->
-                val clickedItem = array[p2]
-                Toast.makeText(this, clickedItem, Toast.LENGTH_SHORT).show()
-            }
+
     }
-
-    fun getData(): Array<String> {
-        return arrayOf(
-            "Andhra Pradesh",
-            "Arunachal Pradesh",
-            "Assam",
-            "Bihar",
-            "Chhattisgarh",
-            "Goa",
-            "Gujarat",
-            "Haryana",
-            "Himachal Pradesh",
-            "Jammu and Kashmir",
-            "Jharkhand",
-            "Karnataka",
-            "Kerala",
-            "Madhya Pradesh",
-            "Maharashtra",
-            "Manipur",
-            "Meghalaya",
-            "Mizoram",
-            "Nagaland",
-            "Odisha",
-            "Punjab",
-            "Rajasthan",
-            "Sikkim",
-            "Tamil Nadu",
-            "Telangana",
-            "Tripura",
-            "Uttarakhand",
-            "Uttar Pradesh",
-            "West Bengal",
-            "Andaman and Nicobar Islands",
-            "Chandigarh",
-            "Dadra and Nagar Haveli",
-            "Daman and Diu",
-            "Delhi",
-            "Lakshadweep",
-            "Puducherry"
-        )
-    }
-
-
 }
