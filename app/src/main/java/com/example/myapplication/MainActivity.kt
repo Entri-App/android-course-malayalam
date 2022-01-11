@@ -1,7 +1,10 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
 
@@ -22,9 +25,16 @@ class MainActivity : AppCompatActivity() {
         //TODO : Define Data
         val user = getData()
         //TODO : Create custom Adapter
+        val adapter = CustomAdapter(user)
 
         // TODO : Set adapter to listview
+        binding.listView.adapter = adapter
 
+        binding.listView.onItemClickListener =
+            AdapterView.OnItemClickListener { p0, p1, p2, p3 ->
+                val contact = user[p2]
+                Toast.makeText(this, "Clicked at ${contact.name}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun getData(): ArrayList<UserData> {
