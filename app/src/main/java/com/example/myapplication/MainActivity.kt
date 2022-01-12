@@ -22,19 +22,9 @@ class MainActivity : AppCompatActivity() {
 
     fun setupUI() {
 
-        //TODO : Define Data
+
         val user = getData()
-        //TODO : Create custom Adapter
-        val adapter = CustomAdapter(user)
 
-        // TODO : Set adapter to listview
-        binding.listView.adapter = adapter
-
-        binding.listView.onItemClickListener =
-            AdapterView.OnItemClickListener { p0, p1, p2, p3 ->
-                val contact = user[p2]
-                Toast.makeText(this, "Clicked at ${contact.name}", Toast.LENGTH_SHORT).show()
-            }
     }
 
     private fun getData(): ArrayList<UserData> {
