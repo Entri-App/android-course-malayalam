@@ -32,14 +32,16 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.layoutManager = layoutManager
 
         //TODO : Set Adapter
-        binding.recyclerView.adapter = MyAdapter(users)
+        val adapter = MyAdapter(users) { it, position ->
+            Toast.makeText(this, "Item Clicked ${it.name}", Toast.LENGTH_SHORT).show()
+        }
+        binding.recyclerView.adapter = adapter
 
         //TODO : Add divider line
         val itemDecorator = DividerItemDecoration(this, layoutManager.orientation)
         binding.recyclerView.addItemDecoration(itemDecorator)
 
-        //TODO : Set OnclickListner
-
+        //TODO : Set OnclickListener
 
 
     }

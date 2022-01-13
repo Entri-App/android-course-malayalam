@@ -5,10 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
-class MyAdapter(private var data: ArrayList<UserData>) :
+class MyAdapter(private var data: ArrayList<UserData>, private val onClick : (UserData, Int) -> Unit) :
     RecyclerView.Adapter<MyAdapter.ContactVH>() {
 
 
@@ -26,7 +27,9 @@ class MyAdapter(private var data: ArrayList<UserData>) :
         txtName.text = dataItem.name
         txtPhone.text = dataItem.phone
         imageView.setImageDrawable(ContextCompat.getDrawable(imageView.context, dataItem.avatar))
-
+        holder.itemView.setOnClickListener {
+            onClick(dataItem,position)
+        }
     }
 
     override fun getItemCount(): Int {
