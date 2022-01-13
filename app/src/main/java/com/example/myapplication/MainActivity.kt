@@ -6,6 +6,9 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -21,9 +24,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupUI() {
+        //TODO : Data source init
+        val users = getData()
+
+        //TODO : Set LayoutManager for RecyclerView
+        val layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.layoutManager = layoutManager
+
+        //TODO : Set Adapter
+        binding.recyclerView.adapter = MyAdapter(users)
+
+        //TODO : Add divider line
+        val itemDecorator = DividerItemDecoration(this, layoutManager.orientation)
+        binding.recyclerView.addItemDecoration(itemDecorator)
+
+        //TODO : Set OnclickListner
 
 
-        val user = getData()
 
     }
 
