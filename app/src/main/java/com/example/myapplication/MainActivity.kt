@@ -25,33 +25,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupUI() {
-        //TODO : Data source init
-        val users = getData()
 
-        //TODO : Set Adapter
-        val adapter = MyAdapter(users) { it, position ->
-            Toast.makeText(this, "Item Clicked ${it.name}", Toast.LENGTH_SHORT).show()
-        }
-        binding.recyclerView.adapter = adapter
-
-
-        //TODO : Set OnclickListener
-
-
-    }
-
-    private fun getData(): ArrayList<UserData> {
-
-        val data = ArrayList<UserData>()
-        data.add(UserData("Sreehari K", "123 456 789 0", R.drawable.avatar))
-        data.add(UserData("John\nDow", "567 456\n789 8", R.drawable.avatar))
-        data.add(UserData("Custom\n\nName", "368 567 789 0", R.drawable.avatar))
-        data.add(UserData("New Friend", "456 456 123 1", R.drawable.avatar))
-        data.add(UserData("Random\nGuy", "132 354 789 6", R.drawable.avatar))
-        data.add(UserData("Random\n\n\nGuy #2", "123 890 789 9", R.drawable.avatar))
-        data.add(UserData("Ramu", "897 423 789 8", R.drawable.avatar))
-        data.add(UserData("Damu", "123 678 456 0", R.drawable.avatar))
-        return data
 
     }
 }
