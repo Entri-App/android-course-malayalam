@@ -2,8 +2,11 @@ package com.example.myapplication
 
 import android.Manifest
 import android.app.Activity
+import android.content.Intent
+import android.content.Intent.ACTION_VIEW
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -23,9 +26,6 @@ import com.example.myapplication.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val CAMERA_REQ_CODE = 123
-    private lateinit var request: ActivityResultLauncher<String>
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -35,46 +35,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupUI() {
-        request =
-            registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-                if (isGranted) {
-                    Toast.makeText(this, "Read contact permission granted", Toast.LENGTH_SHORT)
-                        .show()
-                } else {
-                    Toast.makeText(this, "Read contact permission denied!!!!", Toast.LENGTH_SHORT)
-                        .show()
-                }
-            }
-
     }
 
-    //Requests permissions with ActivityResultContracts
-    fun checkPermissionInNewWay(view: android.view.View) {
-        request.launch(Manifest.permission.READ_CONTACTS)
-    }
-
-    //Function to check runtime permission in old way.
-    fun checkPermissionInOldWay(view: android.view.View) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            requestPermissions(arrayOf(Manifest.permission.CAMERA), CAMERA_REQ_CODE)
-        } else {
-            //Continue with feature
-        }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        if (requestCode == CAMERA_REQ_CODE) {
-            if (grantResults[0] == PERMISSION_GRANTED) {
-                Toast.makeText(this, "Camera permission granted", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Camera permission denied!!!!", Toast.LENGTH_SHORT).show()
-            }
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    fun openGoogle(view: View) {
+        val intent = Intent(ACTION_VIEW, Uri.parse("http://www.google.com"))
+        startActivity(intent)
     }
 
 }
