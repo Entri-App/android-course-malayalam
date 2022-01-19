@@ -3,7 +3,7 @@ package com.example.myapplication
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
-import android.content.Intent.ACTION_VIEW
+import android.content.Intent.*
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.net.Uri
@@ -36,10 +36,4 @@ class MainActivity : AppCompatActivity() {
 
     fun setupUI() {
     }
-
-    fun openGoogle(view: View) {
-        val intent = Intent(ACTION_VIEW, Uri.parse("http://www.google.com"))
-        startActivity(intent)
-    }
-
 }
