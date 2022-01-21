@@ -35,5 +35,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupUI() {
+        binding.btnDial.setOnClickListener {
+            val phone = binding.txtPhone.text.toString()
+            if (phone.isBlank() || phone.length < 6) {
+                binding.txtPhone.error = "Invalid phone"
+                return@setOnClickListener
+            }
+
+            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:+91$phone"))
+            startActivity(intent)
+
+        }
     }
 }
