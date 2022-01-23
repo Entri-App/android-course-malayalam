@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.Manifest
+import android.R.attr
 import android.app.Activity
 import android.content.Intent
 import android.content.Intent.*
@@ -22,6 +23,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityMainBinding
+import android.R.attr.phoneNumber
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,7 +45,9 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:+91$phone"))
+            val messageBody = binding.txtMsg.text.toString()
+            val intent = Intent(ACTION_VIEW, Uri.parse("smsto:$phone"))
+            intent.putExtra("sms_body",messageBody)
             startActivity(intent)
 
         }
