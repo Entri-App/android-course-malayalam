@@ -24,6 +24,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityMainBinding
 import android.R.attr.phoneNumber
+import android.util.Patterns
+import android.util.Patterns.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -38,7 +40,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupUI() {
-        binding.btnDial.setOnClickListener {
+        binding.btnCompose.setOnClickListener {
+
 
         }
     }
