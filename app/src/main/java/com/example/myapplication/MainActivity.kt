@@ -39,16 +39,6 @@ class MainActivity : AppCompatActivity() {
 
     fun setupUI() {
         binding.btnDial.setOnClickListener {
-            val phone = binding.txtPhone.text.toString()
-            if (phone.isBlank() || phone.length < 6) {
-                binding.txtPhone.error = "Invalid phone"
-                return@setOnClickListener
-            }
-
-            val messageBody = binding.txtMsg.text.toString()
-            val intent = Intent(ACTION_VIEW, Uri.parse("smsto:$phone"))
-            intent.putExtra("sms_body",messageBody)
-            startActivity(intent)
 
         }
     }
