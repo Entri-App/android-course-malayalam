@@ -43,24 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     fun setupUI() {
         binding.btnShowAlert.setOnClickListener {
-            //TODO : Create alert dialogue builder
-            val builder = AlertDialog.Builder(this)
-            //TODO : Set props
-            builder.setTitle("This is my title")
-            builder.setMessage("This is my message")
-            builder.setIcon(R.drawable.ic_tv)
-            builder.setCancelable(false)
-            //TODO : Set buttons and event handlers
-            builder.setPositiveButton("Yes") { p0, p1 ->
-                Toast.makeText(this, "Yes Clicked", Toast.LENGTH_SHORT).show()
-            }
-            builder.setNegativeButton("No", null)
-            builder.setNeutralButton("Neutral") { p0, p1 ->
-                Toast.makeText(this, "Neutral Clicked", Toast.LENGTH_SHORT).show()
-            }
-            //TODO : Create and show alert dialog
-            val alert = builder.create()
-            alert.show()
+
         }
     }
 }
