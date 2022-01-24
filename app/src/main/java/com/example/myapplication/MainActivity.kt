@@ -24,6 +24,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityMainBinding
 import android.R.attr.phoneNumber
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.util.Patterns
 import android.util.Patterns.*
 
@@ -40,9 +42,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupUI() {
-        binding.btnCompose.setOnClickListener {
-
-
+        binding.btnShowAlert.setOnClickListener {
+            //TODO : Create alert dialogue builder
+            val builder = AlertDialog.Builder(this)
+            //TODO : Set props
+            builder.setTitle("This is my title")
+            builder.setMessage("This is my message")
+            builder.setIcon(R.drawable.ic_tv)
+            builder.setCancelable(false)
+            //TODO : Set buttons and event handlers
+            builder.setPositiveButton("Yes") { p0, p1 ->
+                Toast.makeText(this, "Yes Clicked", Toast.LENGTH_SHORT).show()
+            }
+            builder.setNegativeButton("No", null)
+            builder.setNeutralButton("Neutral") { p0, p1 ->
+                Toast.makeText(this, "Neutral Clicked", Toast.LENGTH_SHORT).show()
+            }
+            //TODO : Create and show alert dialog
+            val alert = builder.create()
+            alert.show()
         }
     }
 }
