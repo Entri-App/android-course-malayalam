@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.Manifest
 import android.R.attr
+import android.R.attr.dial
 import android.app.Activity
 import android.content.Intent
 import android.content.Intent.*
@@ -25,9 +26,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityMainBinding
 import android.R.attr.phoneNumber
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.DialogInterface
 import android.util.Patterns
 import android.util.Patterns.*
+import com.example.myapplication.databinding.LayoutDialogBinding
 
 
 class MainActivity : AppCompatActivity() {
@@ -44,6 +47,21 @@ class MainActivity : AppCompatActivity() {
     fun setupUI() {
         binding.btnShowAlert.setOnClickListener {
 
+            val dialog = Dialog(this)
+
+            val dialogViewBinding = LayoutDialogBinding.inflate(layoutInflater)
+            dialogViewBinding.btnCancel.setOnClickListener {
+                Toast.makeText(this, "Cancel clicked", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+            }
+            dialogViewBinding.btnOk.setOnClickListener {
+                Toast.makeText(this, "OK clicked", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+            }
+
+            dialog.setContentView(dialogViewBinding.root)
+            dialog.setCancelable(false)
+            dialog.show()
         }
     }
 }
