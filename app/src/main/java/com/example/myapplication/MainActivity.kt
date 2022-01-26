@@ -48,21 +48,6 @@ class MainActivity : AppCompatActivity() {
         //same as day 92
         binding.btnShowAlert.setOnClickListener {
 
-            val dialog = Dialog(this)
-
-            val dialogViewBinding = LayoutDialogBinding.inflate(layoutInflater)
-            dialogViewBinding.btnCancel.setOnClickListener {
-                Toast.makeText(this, "Cancel clicked", Toast.LENGTH_SHORT).show()
-                dialog.dismiss()
-            }
-            dialogViewBinding.btnOk.setOnClickListener {
-                Toast.makeText(this, "OK clicked", Toast.LENGTH_SHORT).show()
-                dialog.dismiss()
-            }
-
-            dialog.setContentView(dialogViewBinding.root)
-            dialog.setCancelable(false)
-            dialog.show()
         }
     }
 }
