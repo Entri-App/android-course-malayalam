@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupUI() {
+        //same as day 92
         binding.btnShowAlert.setOnClickListener {
 
             val dialog = Dialog(this)
