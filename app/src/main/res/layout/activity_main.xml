@@ -9,7 +9,6 @@
     android:padding="15dp"
     tools:context=".MainActivity">
 
-
     <Button
         android:layout_gravity="center"
         android:layout_marginTop="15dp"

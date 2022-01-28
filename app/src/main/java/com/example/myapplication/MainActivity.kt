@@ -1,6 +1,6 @@
 package com.example.myapplication
 
-import android.os.Build
+import android.R.layout
 import android.os.Bundle
 import android.view.Gravity
 import android.widget.Toast
@@ -21,20 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     fun setupUI() {
         binding.btnShowToast.setOnClickListener {
-            val toast = Toast.makeText(this, "Simple Toast", Toast.LENGTH_SHORT)
-            toast.setGravity(Gravity.BOTTOM or Gravity.RIGHT, 0, 0)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                toast.addCallback(object : Toast.Callback() {
-                    override fun onToastShown() {
-                        super.onToastShown()
-                    }
 
-                    override fun onToastHidden() {
-                        super.onToastHidden()
-                    }
-                })
-            }
-            toast.show()
         }
     }
 }
