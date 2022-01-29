@@ -6,16 +6,12 @@
     android:layout_height="match_parent"
     android:gravity="center_vertical"
     android:orientation="vertical"
-    android:padding="15dp"
     tools:context=".MainActivity">
 
-    <Button
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:id="@+id/btn_show_toast"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Show Toast" />
-
-
+        android:layout_gravity="center"
+        android:text="Options Menu"
+        android:textSize="24sp" />
 </LinearLayout>

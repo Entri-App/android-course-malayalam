@@ -3,10 +3,10 @@ package com.example.myapplication
 import android.R.layout
 import android.os.Bundle
 import android.view.Gravity
+import android.view.Menu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
-import com.example.myapplication.databinding.LayoutToastBinding
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,15 +21,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupUI() {
-        binding.btnShowToast.setOnClickListener {
-            //TODO : Create Toast
-            val toast = Toast(this)
-            //TODO : Set Layout
-            val binding = LayoutToastBinding.inflate(layoutInflater)
-            toast.view = binding.root
-            toast.duration = Toast.LENGTH_LONG
-            //TODO : Show Toast
-            toast.show()
-        }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
 }
