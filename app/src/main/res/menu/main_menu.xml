@@ -31,5 +31,21 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always|collapseActionView" />
 
+    <item
+        android:id="@+id/menu_others"
+        android:title="Others">
+        <menu>
+            <item
+                android:id="@+id/menu_about"
+                android:title="About Us" />
+            <item
+                android:id="@+id/menu_contact"
+                android:title="Contact Us" />
+            <item
+                android:id="@+id/menu_legal"
+                android:title="Legal" />
+        </menu>
+    </item>
+
 
 </menu>

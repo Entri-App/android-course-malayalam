@@ -49,6 +49,18 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_settings -> {
                 Toast.makeText(this, "Settings is clicked", Toast.LENGTH_SHORT).show()
             }
+            R.id.menu_about -> {
+                Toast.makeText(this, "About is clicked", Toast.LENGTH_SHORT).show()
+            }
+            R.id.menu_contact -> {
+                Toast.makeText(this, "Contact us is clicked", Toast.LENGTH_SHORT).show()
+            }
+            R.id.menu_legal -> {
+                Toast.makeText(this, "Legal is clicked", Toast.LENGTH_SHORT).show()
+            }
+            R.id.menu_others -> {
+                Toast.makeText(this, "Sub menu has been opened", Toast.LENGTH_SHORT).show()
+            }
             else -> return super.onOptionsItemSelected(item)
         }
         return true
