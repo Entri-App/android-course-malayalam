@@ -9,9 +9,19 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/tv_floating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Options Menu"
+        android:text="Floating Context Menu"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tv_action_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:text="Contextual Action Mode"
         android:textSize="24sp" />
 </LinearLayout>

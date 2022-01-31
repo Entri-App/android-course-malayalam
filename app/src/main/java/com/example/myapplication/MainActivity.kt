@@ -1,18 +1,15 @@
 package com.example.myapplication
 
-import android.R.layout
 import android.os.Bundle
-import android.view.Gravity
-import android.view.Menu
-import android.view.MenuItem
+import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
 import com.example.myapplication.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
 
+    private var actionMode: ActionMode? = null
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,81 +20,90 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupUI() {
+        registerForContextMenu(binding.tvFloating)
+        binding.tvActionMode.setOnLongClickListener {
+            if (actionMode != null) {
+                return@setOnLongClickListener false
+            }
+            actionMode = startActionMode(actionModeCallback)
+            return@setOnLongClickListener true
+        }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.main_menu, menu)
-        return true
+    override fun onCreateContextMenu(
+        menu: ContextMenu?,
+        v: View?,
+        menuInfo: ContextMenu.ContextMenuInfo?
+    ) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+        val inflator = menuInflater
+        inflator.inflate(R.menu.main_menu, menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onContextItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_profile -> {
-                Toast.makeText(this, "Profile is clicked", Toast.LENGTH_SHORT).show()
-            }
-            R.id.menu_search -> {
-                val searchView = item.actionView as SearchView
-                setupSearchView(searchView)
-            }
-            R.id.menu_edit -> {
-                Toast.makeText(this, "Edit is clicked", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "menu_profile clicked", Toast.LENGTH_SHORT).show()
             }
             R.id.menu_delete -> {
-                Toast.makeText(this, "Delete is clicked", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "menu_delete clicked", Toast.LENGTH_SHORT).show()
+            }
+            R.id.menu_edit -> {
+                Toast.makeText(this@MainActivity, "menu_edit clicked", Toast.LENGTH_SHORT).show()
             }
             R.id.menu_settings -> {
-                Toast.makeText(this, "Settings is clicked", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "menu_settings clicked", Toast.LENGTH_SHORT)
+                    .show()
             }
-            R.id.menu_about -> {
-                Toast.makeText(this, "About is clicked", Toast.LENGTH_SHORT).show()
-            }
-            R.id.menu_contact -> {
-                Toast.makeText(this, "Contact us is clicked", Toast.LENGTH_SHORT).show()
-            }
-            R.id.menu_legal -> {
-                Toast.makeText(this, "Legal is clicked", Toast.LENGTH_SHORT).show()
-            }
-            R.id.menu_others -> {
-                Toast.makeText(this, "Sub menu has been opened", Toast.LENGTH_SHORT).show()
-            }
-            else -> return super.onOptionsItemSelected(item)
+            else -> return super.onContextItemSelected(item)
         }
         return true
+
     }
 
-    private fun setupSearchView(searchView: SearchView) {
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                Toast.makeText(this@MainActivity, query, Toast.LENGTH_SHORT).show()
-                return true
-            }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
+    private val actionModeCallback = object : ActionMode.Callback {
+        override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
+            val inflater = mode.menuInflater
+            inflater.inflate(R.menu.main_menu, menu)
+            mode.title = "Choose an action"
+            return true
+        }
 
-        })
-    }
+        override fun onPrepareActionMode(p0: ActionMode?, p1: Menu?): Boolean {
+            return false
+        }
 
-    /*fun onClickMenu(item: MenuItem) {
-        when (item.itemId) {
-            R.id.menu_profile -> {
-                Toast.makeText(this, "Profile is clicked", Toast.LENGTH_SHORT).show()
-            }
-            R.id.menu_search -> {
-                Toast.makeText(this, "Search is clicked", Toast.LENGTH_SHORT).show()
-            }
-            R.id.menu_edit -> {
-                Toast.makeText(this, "Edit is clicked", Toast.LENGTH_SHORT).show()
-            }
-            R.id.menu_delete -> {
-                Toast.makeText(this, "Delete is clicked", Toast.LENGTH_SHORT).show()
-            }
-            R.id.menu_settings -> {
-                Toast.makeText(this, "Settings is clicked", Toast.LENGTH_SHORT).show()
+        override fun onActionItemClicked(p0: ActionMode?, item: MenuItem): Boolean {
+            return when (item.itemId) {
+                R.id.menu_profile -> {
+                    Toast.makeText(this@MainActivity, "menu_profile clicked", Toast.LENGTH_SHORT)
+                        .show()
+                    true
+                }
+                R.id.menu_delete -> {
+                    Toast.makeText(this@MainActivity, "menu_delete clicked", Toast.LENGTH_SHORT)
+                        .show()
+                    true
+                }
+                R.id.menu_edit -> {
+                    Toast.makeText(this@MainActivity, "menu_edit clicked", Toast.LENGTH_SHORT)
+                        .show()
+                    true
+                }
+                R.id.menu_settings -> {
+                    Toast.makeText(this@MainActivity, "menu_settings clicked", Toast.LENGTH_SHORT)
+                        .show()
+                    true
+                }
+                else -> false
             }
         }
-    }*/
+
+        override fun onDestroyActionMode(p0: ActionMode?) {
+            actionMode = null
+        }
+
+    }
 
 }
