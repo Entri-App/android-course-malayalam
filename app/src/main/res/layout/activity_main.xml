@@ -4,24 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_vertical"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tv_floating"
+    <Button
+        android:id="@+id/btn_show_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Floating Context Menu"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/tv_action_mode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="32dp"
-        android:text="Contextual Action Mode"
-        android:textSize="24sp" />
+        android:text="Show Menu" />
 </LinearLayout>
