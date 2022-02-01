@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.PopupMenu
 import android.widget.Toast
@@ -11,50 +12,43 @@ import com.example.myapplication.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    val TAG = "MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d(TAG, "Inside onCreate")
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        setupUI()
     }
 
-    fun setupUI() {
-        binding.btnShowMenu.setOnClickListener {
-            val menu = PopupMenu(this, it)
-            menu.inflate(R.menu.main_menu)
-            menu.setOnMenuItemClickListener(menuCallback)
-            menu.show()
-        }
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "Inside onStart")
     }
 
-    val menuCallback = PopupMenu.OnMenuItemClickListener {
-        when (it.itemId) {
-            R.id.menu_settings -> {
-                Toast.makeText(this, "menu_settings clicked", Toast.LENGTH_SHORT).show()
-            }
-            R.id.menu_delete -> {
-                Toast.makeText(this, "menu_delete clicked", Toast.LENGTH_SHORT).show()
-            }
-            R.id.menu_edit -> {
-                Toast.makeText(this, "menu_edit clicked", Toast.LENGTH_SHORT).show()
-            }
-            R.id.menu_search -> {
-                Toast.makeText(this, "menu_search clicked", Toast.LENGTH_SHORT).show()
-            }
-            R.id.menu_profile -> {
-                Toast.makeText(this, "menu_profile clicked", Toast.LENGTH_SHORT).show()
-            }
-            R.id.menu_about -> {
-                Toast.makeText(this, "menu_about clicked", Toast.LENGTH_SHORT).show()
-            }
-            R.id.menu_contact -> {
-                Toast.makeText(this, "menu_contact clicked", Toast.LENGTH_SHORT).show()
-            }
-            R.id.menu_legal -> {
-                Toast.makeText(this, "menu_legal clicked", Toast.LENGTH_SHORT).show()
-            }
-        }
-        return@OnMenuItemClickListener true
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "Inside onResume")
     }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(TAG, "Inside onRestart")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "Inside onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "Inside onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "Inside onDestroy")
+    }
+
 }
