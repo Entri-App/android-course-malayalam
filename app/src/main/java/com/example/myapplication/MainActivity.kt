@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             val intent = Intent(this, DashbaordActivity::class.java)
             startActivity(intent)
-            finish()
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         }
     }
 }
