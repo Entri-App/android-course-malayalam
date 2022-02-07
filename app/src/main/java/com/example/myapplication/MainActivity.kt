@@ -24,20 +24,19 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupUI() {
         binding.btnLogin.setOnClickListener {
-
-            var array = intArrayOf(1, 2, 3, 4, 5, 6)
-
             val username = binding.txtUsername.text.toString()
             val password = binding.txtPassword.text.toString()
 
-            val intent = Intent(this, DashbaordActivity::class.java)
-            intent.putExtra("AGE", 18.0)
-            intent.putExtra("ARRAY", array)
+//            val bundle = Bundle()
+//            bundle.putString("USERNAME", username)
+//            bundle.putString("PASSWORD", password)
+//
+//            val intent = Intent(this, DashbaordActivity::class.java)
+//            intent.putExtras(bundle)
+//            startActivity(intent)
 
-            val userObj = UserInfo(username, password)
-            intent.putExtra("USER_OBJ", userObj)
+            DashbaordActivity.start(this, username, password)
 
-            startActivity(intent)
         }
     }
 }
