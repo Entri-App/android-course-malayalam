@@ -26,17 +26,7 @@ class MainActivity : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             val username = binding.txtUsername.text.toString()
             val password = binding.txtPassword.text.toString()
-
-//            val bundle = Bundle()
-//            bundle.putString("USERNAME", username)
-//            bundle.putString("PASSWORD", password)
-//
-//            val intent = Intent(this, DashbaordActivity::class.java)
-//            intent.putExtras(bundle)
-//            startActivity(intent)
-
             DashbaordActivity.start(this, username, password)
-
         }
     }
 }

@@ -17,10 +17,6 @@ class DashbaordActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-
-//        val bundle = intent.extras
-//        val username = bundle?.getString(ID_USERNAME)
-//        val password = bundle?.getString(ID_PASSWORD)
         val username = intent.getStringExtra(ID_USERNAME)
         val password = intent.getStringExtra(ID_PASSWORD)
         binding.txtUserInfo.text = "Username : $username \n Password : $password"
