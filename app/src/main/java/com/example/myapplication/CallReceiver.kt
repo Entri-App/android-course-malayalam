@@ -7,19 +7,22 @@ import android.telephony.TelephonyManager
 import android.widget.Toast
 import java.lang.Exception
 
-class CallReceiver : BroadcastReceiver() {
+class CallReceiver(
+    private var callback: (String) -> Unit
+) : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         try {
             val state = intent.getStringExtra(TelephonyManager.EXTRA_STATE)
             if (state == TelephonyManager.EXTRA_STATE_RINGING) {
-                Toast.makeText(context, "Phone is ringing", Toast.LENGTH_SHORT).show()
+                val num = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER)
+                callback("Phone is ringing")
             }
             if (state == TelephonyManager.EXTRA_STATE_OFFHOOK) {
-                Toast.makeText(context, "Call received", Toast.LENGTH_SHORT).show()
+                callback("Call received")
             }
             if (state == TelephonyManager.EXTRA_STATE_IDLE) {
-                Toast.makeText(context, "Phone is Idle", Toast.LENGTH_SHORT).show()
+                callback("Phone is Idle")
             }
         } catch (e: Exception) {
             e.printStackTrace()
