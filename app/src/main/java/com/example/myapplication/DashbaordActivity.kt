@@ -15,7 +15,6 @@ import com.example.myapplication.databinding.ActivityDashbaordBinding
 
 class DashbaordActivity : AppCompatActivity() {
     lateinit var binding: ActivityDashbaordBinding
-    var smsReceiver: SMSReceiver? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashbaordBinding.inflate(layoutInflater)
@@ -28,67 +27,6 @@ class DashbaordActivity : AppCompatActivity() {
     private fun setupUI() {
 
     }
-
-    private fun requestPermission(onPermissionGranted: () -> Unit) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            requestPermissions(
-                Manifest.permission.RECEIVE_SMS,
-            ) {
-                requestCode = 4
-                resultCallback = {
-                    when (this) {
-                        is PermissionResult.PermissionGranted -> {
-                            onPermissionGranted()
-                        }
-                        is PermissionResult.PermissionDenied -> {
-                            Toast.makeText(
-                                this@DashbaordActivity,
-                                "Permission Denied",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                        is PermissionResult.PermissionDeniedPermanently -> {
-                            Toast.makeText(
-                                this@DashbaordActivity,
-                                "Permission Permanently Denied",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                        is PermissionResult.ShowRational -> {
-                            Toast.makeText(
-                                this@DashbaordActivity,
-                                "Permission Denied, show rational and re-ask permission",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private fun initBR() {
-        smsReceiver = SMSReceiver { sender, content ->
-            binding.txtSender.text = sender
-            binding.txtContent.text = content
-        }
-        registerReceiver(smsReceiver, IntentFilter("android.provider.Telephony.SMS_RECEIVED"))
-    }
-
-    override fun onStart() {
-        super.onStart()
-        requestPermission {
-            initBR()
-        }
-    }
-
-    override fun onStop() {
-        super.onStop()
-        if (smsReceiver != null) {
-            unregisterReceiver(smsReceiver)
-        }
-    }
-
 
     companion object {
         val ID_USERNAME = "USERNAME"
