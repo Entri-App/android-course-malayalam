@@ -28,5 +28,8 @@ class MainActivity : AppCompatActivity() {
             val password = binding.txtPassword.text.toString()
             DashbaordActivity.start(this, username, password)
         }
+        binding.tvRegister.setOnClickListener {
+            RegisterActivity.start(this)
+        }
     }
 }

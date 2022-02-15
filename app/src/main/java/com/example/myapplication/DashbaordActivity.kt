@@ -1,16 +1,9 @@
 package com.example.myapplication
 
-import android.Manifest
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
-import com.eazypermissions.common.model.PermissionResult
-import com.eazypermissions.dsl.extension.requestPermissions
+import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityDashbaordBinding
 
 class DashbaordActivity : AppCompatActivity() {
