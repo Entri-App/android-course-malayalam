@@ -1,13 +1,11 @@
 package com.example.myapplication
 
-import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
-import android.view.*
-import android.widget.PopupMenu
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
 import com.example.myapplication.databinding.ActivityMainBinding
 
 
@@ -50,7 +48,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkForSharedPrefData() {
-        val sharedPref = getSharedPreferences("LOGIN_INFO", MODE_PRIVATE)
+        val sharedPref = getEncSharedPref()
         val username = sharedPref.getString("USERNAME", "")
         val password = sharedPref.getString("PASSWORD", "")
 
@@ -67,8 +65,9 @@ class MainActivity : AppCompatActivity() {
             val username = binding.txtUsername.text.toString()
             val password = binding.txtPassword.text.toString()
 
+            val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
             //get shared pref
-            val sharedPref = getSharedPreferences("LOGIN_INFO", MODE_PRIVATE)
+            val sharedPref = getEncSharedPref()
             //create editor
             val editor = sharedPref.edit()
             //add data
@@ -78,5 +77,16 @@ class MainActivity : AppCompatActivity() {
             editor.commit()
 
         }
+    }
+
+    private fun getEncSharedPref(): SharedPreferences {
+        val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+        return EncryptedSharedPreferences.create(
+            "secret_shared_prefs",
+            masterKeyAlias,
+            this,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        );
     }
 }
