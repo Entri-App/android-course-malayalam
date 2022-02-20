@@ -18,7 +18,7 @@ class DashbaordActivity : AppCompatActivity() {
 
 
     private fun setupUI() {
-
+        val username = PrefUtils.getUsername(this)
     }
 
     companion object {
