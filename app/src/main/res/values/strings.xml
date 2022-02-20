@@ -3,4 +3,5 @@
     <string name="placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius felis nec eros dapibus ullamcorper. Maecenas non neque a mi vehicula porttitor eget et est. Vivamus sed semper arcu. Nam id velit ac lectus dapibus tincidunt eu sed nibh. Nunc ut ipsum ligula. Morbi magna tortor, interdum ac porttitor non, sodales faucibus magna. Nam consectetur, risus vel vulputate condimentum, massa lacus elementum orci, non auctor eros sem et mi. Ut porta maximus tellus eget pulvinar.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>
