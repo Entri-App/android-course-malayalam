@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         if (binding.cbSaveInfo.isChecked) {
             val username = binding.txtUsername.text.toString()
             val password = binding.txtPassword.text.toString()
-            PrefUtils.
+            PrefUtils.saveLoginInfo(this, username, password)
         }
     }
 
