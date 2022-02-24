@@ -10,7 +10,7 @@ import com.example.myapplication.databinding.ActivityRegisterBinding
 import com.google.android.gms.auth.api.phone.SmsRetriever
 import com.google.android.gms.tasks.Task
 
-const val TAG = "RegisterActivity"
+const val TAG = "MapsDemo"
 
 class RegisterActivity : AppCompatActivity() {
 
