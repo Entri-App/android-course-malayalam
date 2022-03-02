@@ -1,16 +1,12 @@
-package com.example.myapplication
+package com.example.myapplication.ui.activities
 
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityRegisterBinding
-import com.google.android.gms.auth.api.phone.SmsRetriever
-import com.google.android.gms.tasks.Task
 
-const val TAG = "MapsDemo"
+const val TAG = "EntriApp"
 
 class RegisterActivity : AppCompatActivity() {
 

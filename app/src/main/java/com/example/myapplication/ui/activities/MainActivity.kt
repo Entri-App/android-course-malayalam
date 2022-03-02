@@ -1,8 +1,9 @@
-package com.example.myapplication
+package com.example.myapplication.ui.activities
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.utils.PrefUtils
 import com.example.myapplication.databinding.ActivityMainBinding
 
 
