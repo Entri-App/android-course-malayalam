@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/newsFragment"
-        android:name="me.kariot.mynewsapplication.NewsFragment"
+        android:name="me.kariot.mynewsapplication.ui.NewsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" />
 </navigation>
