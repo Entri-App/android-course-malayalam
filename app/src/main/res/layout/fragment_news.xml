@@ -24,7 +24,9 @@
             tools:listitem="@layout/recycler_news_item" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <include layout="@layout/layout_error" />
+    <include
+        android:id="@+id/error"
+        layout="@layout/layout_error" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
