@@ -1,9 +1,11 @@
 package me.kariot.mynewsapplication.ui
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
@@ -65,7 +67,13 @@ class NewsFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        adapter = NewsAdapter()
+        adapter = NewsAdapter {
+            val newsUrl = it.url
+//            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(newsUrl))
+//            startActivity(intent)
+            val customTab = CustomTabsIntent.Builder().build()
+            customTab.launchUrl(requireContext(), Uri.parse(newsUrl))
+        }
         binding.recyclerNews.adapter = adapter
         binding.recyclerNews.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {

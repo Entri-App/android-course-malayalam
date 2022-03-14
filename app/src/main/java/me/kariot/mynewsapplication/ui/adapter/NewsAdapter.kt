@@ -7,7 +7,8 @@ import me.kariot.mynewsapplication.databinding.RecyclerNewsItemBinding
 import me.kariot.mynewsapplication.extensions.loadImage
 import me.kariot.mynewsapplication.model.newsModel.NewsResponse
 
-class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsVH>() {
+class NewsAdapter(val onItemClick: (NewsResponse.Article) -> Unit) :
+    RecyclerView.Adapter<NewsAdapter.NewsVH>() {
 
     var articles = ArrayList<NewsResponse.Article>()
 
@@ -19,6 +20,9 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsVH>() {
 
     override fun onBindViewHolder(holder: NewsVH, position: Int) {
         holder.bind(articles[position])
+        holder.itemView.setOnClickListener {
+            onItemClick(articles[position])
+        }
     }
 
     override fun getItemCount(): Int {
