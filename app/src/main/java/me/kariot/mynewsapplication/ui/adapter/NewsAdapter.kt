@@ -29,7 +29,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsVH>() {
         RecyclerView.ViewHolder(bindingView.root) {
 
         fun bind(article: NewsResponse.Article) {
-            bindingView.imgImage.loadImage(article.urlToImage)
+            bindingView.imgImage.loadImage(article.urlToImage ?: "")
             bindingView.txtTitle.text = article.title
             bindingView.txtContent.text = article.content
             bindingView.txtSource.text = article.author
