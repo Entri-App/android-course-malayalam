@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import me.kariot.mynewsapplication.databinding.RecyclerNewsItemBinding
 import me.kariot.mynewsapplication.extensions.loadImage
 import me.kariot.mynewsapplication.model.newsModel.NewsResponse
+import java.text.SimpleDateFormat
+import java.util.*
 
 class NewsAdapter(val onItemClick: (NewsResponse.Article) -> Unit) :
     RecyclerView.Adapter<NewsAdapter.NewsVH>() {
@@ -37,7 +39,15 @@ class NewsAdapter(val onItemClick: (NewsResponse.Article) -> Unit) :
             bindingView.txtTitle.text = article.title
             bindingView.txtContent.text = article.content
             bindingView.txtSource.text = article.author
-            bindingView.txtTime.text = article.publishedAt
+
+
+            val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
+            val outputFormat = SimpleDateFormat("dd MMM yy HH:mm", Locale.getDefault())
+
+            val date = inputFormat.parse(article.publishedAt)
+            val formattedDate = outputFormat.format(date)
+
+            bindingView.txtTime.text = formattedDate
         }
 
     }
