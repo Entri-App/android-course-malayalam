@@ -35,10 +35,6 @@ class NewsAdapter(val onItemClick: (NewsResponse.Article) -> Unit) :
         RecyclerView.ViewHolder(bindingView.root) {
 
         fun bind(article: NewsResponse.Article) {
-            bindingView.imgImage.loadImage(article.urlToImage ?: "")
-            bindingView.txtTitle.text = article.title
-            bindingView.txtContent.text = article.content
-            bindingView.txtSource.text = article.author
 
 
             val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
@@ -46,8 +42,14 @@ class NewsAdapter(val onItemClick: (NewsResponse.Article) -> Unit) :
 
             val date = inputFormat.parse(article.publishedAt)
             val formattedDate = outputFormat.format(date)
-
-            bindingView.txtTime.text = formattedDate
+            mvp
+            bindingView.apply {
+                txtTime.text = formattedDate
+                imgImage.loadImage(article.urlToImage ?: "")
+                txtTitle.text = article.title
+                txtContent.text = article.content
+                txtSource.text = article.author
+            }
         }
 
     }

@@ -9,6 +9,7 @@ fun ImageView.loadImage(url: String) {
     this.load(url) {
         crossfade(true)
         placeholder(R.mipmap.ic_launcher)
+        error(R.mipmap.ic_launcher)
         transformations(RoundedCornersTransformation(10f))
     }
 }
