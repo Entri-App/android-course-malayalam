@@ -42,7 +42,6 @@ class NewsAdapter(val onItemClick: (NewsResponse.Article) -> Unit) :
 
             val date = inputFormat.parse(article.publishedAt)
             val formattedDate = outputFormat.format(date)
-            mvp
             bindingView.apply {
                 txtTime.text = formattedDate
                 imgImage.loadImage(article.urlToImage ?: "")
