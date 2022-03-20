@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "406141310610",
+    "project_id": "my-news-application-35462",
+    "storage_bucket": "my-news-application-35462.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406141310610:android:bb6e5ff79763ed945c784b",
+        "android_client_info": {
+          "package_name": "me.kariot.mynewsapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406141310610-t0lpdbh76h5kqoads3mi3o22kms5cs9e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXUir_CVzEsyXKXQyzfvl93o9Cyeeg1Ek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "406141310610-t0lpdbh76h5kqoads3mi3o22kms5cs9e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
