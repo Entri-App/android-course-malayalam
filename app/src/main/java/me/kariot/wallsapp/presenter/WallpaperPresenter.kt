@@ -20,22 +20,31 @@ class WallpaperPresenter(private var callback: WallpaperView) {
                     response: Response<ModelWallpaperResponse>
                 ) {
                     if (response.isSuccessful) {
-                        callback.onWallpaperLoaded(response.body()?.photos)
+                        callback.onWallpaperLoaded(
+                            response.body()?.photos,
+                            response.body()?.total_results ?: per_page
+                        )
                     } else {
                         callback.error("API error", page == 1)
                     }
                 }
 
                 override fun onFailure(call: Call<ModelWallpaperResponse>, t: Throwable) {
-                    callback.error("An network error occured", page == 1)
+                    callback.error("An network error occurred", page == 1)
                 }
             })
     }
+
+    fun getNextPage() {
+        page++
+        loadPictures()
+    }
+
 
 }
 
 interface WallpaperView {
     fun isLoading()
-    fun onWallpaperLoaded(wallapapers: List<ModelWallpaperResponse.Photo?>?)
+    fun onWallpaperLoaded(wallapapers: List<ModelWallpaperResponse.Photo?>?, totalPage: Int)
     fun error(message: String, isFirstRequest: Boolean)
 }

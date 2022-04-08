@@ -7,7 +7,9 @@ import me.kariot.wallsapp.databinding.LayoutImageItemBinding
 import me.kariot.wallsapp.model.ModelWallpaperResponse
 import me.kariot.wallsapp.utils.loadImage
 
-class ImagesAdapter : RecyclerView.Adapter<ImagesAdapter.ImageVH>() {
+class ImagesAdapter(
+    private val onPageEndCallback: () -> Unit
+) : RecyclerView.Adapter<ImagesAdapter.ImageVH>() {
 
     var wallpapers = ArrayList<ModelWallpaperResponse.Photo?>()
 
@@ -19,6 +21,9 @@ class ImagesAdapter : RecyclerView.Adapter<ImagesAdapter.ImageVH>() {
 
     override fun onBindViewHolder(holder: ImageVH, position: Int) {
         holder.bind(wallpapers[position])
+        if (position == wallpapers.size - 1) {
+            onPageEndCallback()
+        }
     }
 
     override fun getItemCount() = wallpapers.size
