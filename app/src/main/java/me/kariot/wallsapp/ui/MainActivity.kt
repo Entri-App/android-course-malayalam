@@ -69,6 +69,10 @@ class MainActivity : AppCompatActivity(), WallpaperView {
 
     }
 
+    private fun startImageCropper(i: Int) {
+
+    }
+
     override fun isLoading() {
         isLoading = true
         binding.swipeRefreshLayout.isRefreshing = true
