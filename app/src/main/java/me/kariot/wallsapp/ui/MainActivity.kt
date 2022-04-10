@@ -2,6 +2,7 @@ package me.kariot.wallsapp.ui
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.google.android.material.snackbar.Snackbar
@@ -10,6 +11,7 @@ import me.kariot.wallsapp.databinding.LayoutErrorBinding
 import me.kariot.wallsapp.model.ModelWallpaperResponse
 import me.kariot.wallsapp.presenter.WallpaperPresenter
 import me.kariot.wallsapp.presenter.WallpaperView
+import me.kariot.wallsapp.utils.ImageUtils
 
 const val TAG = "WallsApp"
 
@@ -43,6 +45,24 @@ class MainActivity : AppCompatActivity(), WallpaperView {
         errorBinding.btnRetry.setOnClickListener {
             presenter.loadPictures()
         }
+        binding.fabSetWall.setOnClickListener {
+            val position = binding.viewPager2.currentItem
+            val wallpaper = presenter.wallpapers[position]
+            setWallpaper(wallpaper)
+        }
+    }
+
+    private fun setWallpaper(wallpaper: ModelWallpaperResponse.Photo?) {
+        if (wallpaper == null) {
+            return
+        }
+        ImageUtils.urlToBitmap(this, wallpaper.src?.original ?: "", {
+
+        }, { error ->
+            Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+        })
+
+
     }
 
     override fun isLoading() {

@@ -11,6 +11,8 @@ class WallpaperPresenter(private var callback: WallpaperView) {
     private var page = 1
     private var per_page = 15
 
+    var wallpapers = ArrayList<ModelWallpaperResponse.Photo?>()
+
     fun loadPictures() {
         callback.isLoading()
         RetrofitInstance.wallpaperAPI.getWallpapers(page, per_page)
@@ -24,6 +26,9 @@ class WallpaperPresenter(private var callback: WallpaperView) {
                             response.body()?.photos,
                             response.body()?.total_results ?: per_page
                         )
+                        response.body()?.photos?.let {
+                            wallpapers.addAll(it)
+                        }
                     } else {
                         callback.error("API error", page == 1)
                     }

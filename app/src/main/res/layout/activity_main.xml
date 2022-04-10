@@ -16,10 +16,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.viewpager2.widget.ViewPager2
-            android:orientation="vertical"
             android:id="@+id/viewPager2"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,9 +27,10 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:layout_margin="16dp"
+        android:id="@+id/fab_set_wall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:text="Set Wallpaper"
         app:icon="@drawable/ic_wallpaper"
         app:layout_constraintBottom_toBottomOf="parent"
