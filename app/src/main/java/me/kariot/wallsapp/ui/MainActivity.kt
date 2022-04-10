@@ -1,10 +1,14 @@
 package me.kariot.wallsapp.ui
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.canhub.cropper.CropImageContract
+import com.canhub.cropper.CropImageView
+import com.canhub.cropper.options
 import com.google.android.material.snackbar.Snackbar
 import me.kariot.wallsapp.databinding.ActivityMainBinding
 import me.kariot.wallsapp.databinding.LayoutErrorBinding
@@ -12,6 +16,7 @@ import me.kariot.wallsapp.model.ModelWallpaperResponse
 import me.kariot.wallsapp.presenter.WallpaperPresenter
 import me.kariot.wallsapp.presenter.WallpaperView
 import me.kariot.wallsapp.utils.ImageUtils
+import me.kariot.wallsapp.utils.Utils
 
 const val TAG = "WallsApp"
 
@@ -69,8 +74,27 @@ class MainActivity : AppCompatActivity(), WallpaperView {
 
     }
 
-    private fun startImageCropper(i: Int) {
+    private val cropImage = registerForActivityResult(CropImageContract()) { result ->
+        if (result.isSuccessful) {
+            val uriContent = result.uriContent
+        } else {
+            // an error occurred
+            val exception = result.error
+        }
+    }
 
+    private fun startImageCropper(id: Int) {
+        val imageUri = ImageUtils.getImageUri(this, id)
+        cropImage.launch(
+            options(uri = imageUri) {
+                setGuidelines(CropImageView.Guidelines.ON)
+                setOutputCompressFormat(Bitmap.CompressFormat.PNG)
+                    .setAspectRatio(
+                        Utils.getDeviceWidth(this@MainActivity),
+                        Utils.getDeviceHeight(this@MainActivity)
+                    )
+            }
+        )
     }
 
     override fun isLoading() {

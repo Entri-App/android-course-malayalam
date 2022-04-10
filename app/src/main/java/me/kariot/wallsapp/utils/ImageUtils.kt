@@ -3,7 +3,9 @@ package me.kariot.wallsapp.utils
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import coil.ImageLoader
 import coil.request.ImageRequest
 import java.io.IOException
@@ -42,6 +44,21 @@ object ImageUtils {
         } catch (e: Exception) {
             false
         }
+    }
+
+    fun getImageUri(context: Context, id: Int): Uri? {
+        val files = context.filesDir.listFiles()
+        val filteredFiles = files?.filter {
+            it.canRead() && it.isFile && it.name.contains("$id") && it.name.endsWith(".jpg")
+        }?.map {
+            it?.toUri()
+        }
+        if (filteredFiles.isNullOrEmpty()){
+            return null
+        } else {
+            return filteredFiles.first()
+        }
+
     }
 
 }
