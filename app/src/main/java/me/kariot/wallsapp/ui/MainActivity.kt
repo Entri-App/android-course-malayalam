@@ -57,9 +57,18 @@ class MainActivity : AppCompatActivity(), WallpaperView {
             presenter.loadPictures()
         }
         binding.fabSetWall.setOnClickListener {
+            if (presenter.wallpapers.isEmpty()) {
+                return@setOnClickListener
+            }
             val position = binding.viewPager2.currentItem
             val wallpaper = presenter.wallpapers[position]
             setWallpaper(wallpaper)
+        }
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            adapter.wallpapers.clear()
+            adapter.notifyDataSetChanged()
+            presenter.clearData()
+            presenter.loadPictures()
         }
     }
 

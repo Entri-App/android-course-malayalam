@@ -45,6 +45,11 @@ class WallpaperPresenter(private var callback: WallpaperView) {
         loadPictures()
     }
 
+    fun clearData() {
+        wallpapers.clear()
+        page = 1
+    }
+
 
 }
 
