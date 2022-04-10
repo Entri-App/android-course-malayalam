@@ -1,7 +1,11 @@
 package me.kariot.wallsapp.ui
 
+import android.app.WallpaperManager
 import android.graphics.Bitmap
+import android.graphics.ImageDecoder
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,8 +19,10 @@ import me.kariot.wallsapp.databinding.LayoutErrorBinding
 import me.kariot.wallsapp.model.ModelWallpaperResponse
 import me.kariot.wallsapp.presenter.WallpaperPresenter
 import me.kariot.wallsapp.presenter.WallpaperView
+import me.kariot.wallsapp.utils.Dialogs
 import me.kariot.wallsapp.utils.ImageUtils
 import me.kariot.wallsapp.utils.Utils
+
 
 const val TAG = "WallsApp"
 
@@ -77,9 +83,45 @@ class MainActivity : AppCompatActivity(), WallpaperView {
     private val cropImage = registerForActivityResult(CropImageContract()) { result ->
         if (result.isSuccessful) {
             val uriContent = result.uriContent
+            uriContent?.let {
+
+                val bitmap = when {
+                    Build.VERSION.SDK_INT < 28 -> MediaStore.Images.Media.getBitmap(
+                        this.contentResolver,
+                        uriContent
+                    )
+                    else -> {
+                        val source = ImageDecoder.createSource(this.contentResolver, uriContent)
+                        ImageDecoder.decodeBitmap(source)
+                    }
+                }
+                updateDeviceWallpaper(bitmap)
+            }
+
         } else {
             // an error occurred
             val exception = result.error
+        }
+    }
+
+    private fun updateDeviceWallpaper(bitmap: Bitmap?) {
+        val wallpaperManager = WallpaperManager.getInstance(this)
+        bitmap?.let { image ->
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                Dialogs.askConfirmation(this, {
+                    wallpaperManager.setBitmap(image, null, true, WallpaperManager.FLAG_SYSTEM)
+                    wallpaperManager.setBitmap(image, null, true, WallpaperManager.FLAG_LOCK)
+                    Toast.makeText(this@MainActivity, "Wallpaper updated", Toast.LENGTH_SHORT)
+                        .show()
+                }, {
+                    wallpaperManager.setBitmap(image, null, true, WallpaperManager.FLAG_SYSTEM)
+                    Toast.makeText(this@MainActivity, "Wallpaper updated", Toast.LENGTH_SHORT)
+                        .show()
+                })
+            } else {
+                wallpaperManager.setBitmap(image)
+            }
+
         }
     }
 
