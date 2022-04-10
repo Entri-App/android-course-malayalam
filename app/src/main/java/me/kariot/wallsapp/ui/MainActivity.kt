@@ -56,7 +56,11 @@ class MainActivity : AppCompatActivity(), WallpaperView {
         if (wallpaper == null) {
             return
         }
-        ImageUtils.urlToBitmap(this, wallpaper.src?.original ?: "", {
+        ImageUtils.urlToBitmap(this, wallpaper.src?.original ?: "", { bitmap ->
+            val isSaveSuccess = ImageUtils.saveImageToStorage(this, bitmap, wallpaper.id ?: 0)
+            if (isSaveSuccess) {
+                startImageCropper(wallpaper.id ?: 0)
+            }
 
         }, { error ->
             Toast.makeText(this, error, Toast.LENGTH_SHORT).show()

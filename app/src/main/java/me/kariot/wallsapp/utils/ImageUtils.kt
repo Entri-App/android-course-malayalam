@@ -3,8 +3,10 @@ package me.kariot.wallsapp.utils
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
+import androidx.appcompat.app.AppCompatActivity
 import coil.ImageLoader
 import coil.request.ImageRequest
+import java.io.IOException
 
 object ImageUtils {
     fun urlToBitmap(
@@ -27,6 +29,19 @@ object ImageUtils {
             )
             .build()
         imageLoader.enqueue(request)
+    }
+
+    fun saveImageToStorage(context: Context, bitmap: Bitmap, id: Int): Boolean {
+        return try {
+            context.openFileOutput("${id}.jpg", AppCompatActivity.MODE_PRIVATE).use { stream ->
+                if (!bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)) {
+                    throw IOException("Could not save image")
+                }
+            }
+            true
+        } catch (e: Exception) {
+            false
+        }
     }
 
 }
